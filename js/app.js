@@ -34,9 +34,39 @@ function populateCategories(list){const sel = document.getElementById('category-
  cats.forEach(c=>{const opt=document.createElement('option');opt.value=c;opt.textContent=c;sel.appendChild(opt)});
 }
 
-function setupSearch(){const input = document.getElementById('search');const sel = document.getElementById('category-filter');
- function apply(){const q = input.value.trim().toLowerCase();const c = sel.value;const filtered = PRODUCTS.filter(p => (p.name.toLowerCase().includes(q) || p.description.toLowerCase().includes(q)) && (c? p.category===c:true));renderProducts(filtered)}
- input.addEventListener('input',apply);sel.addEventListener('change',apply);
+function setupSearch(){
+  const input = document.getElementById('search');
+  const catSel = document.getElementById('category-filter');
+  const brandSel = document.getElementById('brand-filter');
+  const colorSel = document.getElementById('color-filter');
+  const minInput = document.getElementById('price-min');
+  const maxInput = document.getElementById('price-max');
+  const sortSel = document.getElementById('sort-filter');
+  function apply(){
+    const q = input.value.trim().toLowerCase();
+    const c = catSel.value;
+    const b = brandSel ? brandSel.value : '';
+    const color = colorSel ? colorSel.value : '';
+    const min = minInput && minInput.value ? parseFloat(minInput.value) : 0;
+    const max = maxInput && maxInput.value ? parseFloat(maxInput.value) : Infinity;
+    let filtered = PRODUCTS.filter(p =>
+      (p.name.toLowerCase().includes(q) || p.description.toLowerCase().includes(q)) &&
+      (c ? p.category === c : true) &&
+      (b ? (p.brand === b) : true) &&
+      (color ? (p.color === color) : true) &&
+      (p.price >= min && p.price <= max)
+    );
+    // Sıralama
+    if (sortSel && sortSel.value) {
+      if (sortSel.value === 'price-asc') filtered = filtered.sort((a,b)=>a.price-b.price);
+      if (sortSel.value === 'price-desc') filtered = filtered.sort((a,b)=>b.price-a.price);
+      if (sortSel.value === 'name-asc') filtered = filtered.sort((a,b)=>a.name.localeCompare(b.name));
+      if (sortSel.value === 'name-desc') filtered = filtered.sort((a,b)=>b.name.localeCompare(a.name));
+    }
+    renderProducts(filtered);
+  }
+  [input,catSel,brandSel,colorSel,minInput,maxInput,sortSel].forEach(el=>el && el.addEventListener('input',apply));
+  [catSel,brandSel,colorSel,sortSel].forEach(el=>el && el.addEventListener('change',apply));
 }
 
 function cartCount(){const cart = JSON.parse(localStorage.getItem(cartKey) || '[]');const count = cart.reduce((s,i)=>s+i.qty,0);document.getElementById('cart-count').textContent=count}

@@ -9,19 +9,38 @@
 <body>
   <header class="site-header">
     <div class="brand">LuxuryFashion</div>
+    <button class="menu-toggle" aria-label="Menüyü Aç/Kapat">☰</button>
     <nav class="nav">
       <a href="index.html">Anasayfa</a>
       <a href="#" id="link-categories">Koleksiyon</a>
       <a href="cart.html">Sepet (<span id="cart-count">0</span>)</a>
     </nav>
   </header>
+  <div class="campaign-bar">Kargo Bedava! | 2025 Sonbahar Koleksiyonu Stoklarda</div>
 
   <main>
-    <section class="hero">
-      <div class="hero-inner">
-        <h1>Yeni Sezon</h1>
-        <p>Seçkin tasarımlar, ücretsiz kargo</p>
-        <a class="btn" href="#products">Alışverişe Başla</a>
+    <section class="banner-slider">
+      <div class="slider-wrapper">
+        <div class="slide active">
+          <img src="https://images.unsplash.com/photo-1512436991641-6745cdb1723f?auto=format&fit=crop&w=1200&q=80" alt="Lüks Moda 1" />
+          <div class="slide-caption">
+            <h1>2025 Lüks Koleksiyon</h1>
+            <p>En yeni tasarımlar, seçkin markalar ve ayrıcalıklı fırsatlar</p>
+            <a class="btn" href="#products">Koleksiyonu Keşfet</a>
+          </div>
+        </div>
+        <div class="slide">
+          <img src="https://images.unsplash.com/photo-1506744038136-46273834b3fb?auto=format&fit=crop&w=1200&q=80" alt="Lüks Moda 2" />
+          <div class="slide-caption">
+            <h1>Özel İndirimler</h1>
+            <p>Yalnızca bu hafta: Seçili ürünlerde %30’a varan indirim</p>
+            <a class="btn" href="#products">Alışverişe Başla</a>
+          </div>
+        </div>
+      </div>
+      <div class="slider-controls">
+        <button class="slider-prev">&#8592;</button>
+        <button class="slider-next">&#8594;</button>
       </div>
     </section>
 
@@ -29,6 +48,29 @@
       <input id="search" placeholder="Ürün veya koleksiyon ara..." />
       <select id="category-filter">
         <option value="">Tüm Kategoriler</option>
+        <option value="Erkek">Erkek</option>
+        <option value="Kadın">Kadın</option>
+        <option value="Unisex">Unisex</option>
+      </select>
+      <select id="brand-filter">
+        <option value="">Tüm Markalar</option>
+        <option value="Beymen">Beymen</option>
+        <option value="Vakko">Vakko</option>
+      </select>
+      <select id="color-filter">
+        <option value="">Tüm Renkler</option>
+        <option value="Siyah">Siyah</option>
+        <option value="Beyaz">Beyaz</option>
+        <option value="Kahverengi">Kahverengi</option>
+      </select>
+      <input id="price-min" type="number" placeholder="Min ₺" style="width:90px" />
+      <input id="price-max" type="number" placeholder="Max ₺" style="width:90px" />
+      <select id="sort-filter">
+        <option value="">Sırala</option>
+        <option value="price-asc">Fiyat: Artan</option>
+        <option value="price-desc">Fiyat: Azalan</option>
+        <option value="name-asc">A'dan Z'ye</option>
+        <option value="name-desc">Z'den A'ya</option>
       </select>
     </section>
 
@@ -36,9 +78,42 @@
   </main>
 
   <footer class="site-footer">
-    <div>© LuxuryFashion - Demo</div>
+    <div class="footer-main">
+      <div class="footer-col">
+        <h4>LuxuryFashion</h4>
+        <p>Yüksek moda, seçkin markalar ve ayrıcalıklı alışveriş deneyimi.</p>
+      </div>
+      <div class="footer-col">
+        <h5>Kategoriler</h5>
+        <ul>
+          <li><a href="#">Kadın</a></li>
+          <li><a href="#">Erkek</a></li>
+          <li><a href="#">Aksesuar</a></li>
+          <li><a href="#">Ayakkabı</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h5>Kurumsal</h5>
+        <ul>
+          <li><a href="contact.html">İletişim</a></li>
+          <li><a href="#">Hakkımızda</a></li>
+          <li><a href="#">Kariyer</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h5>Bizi Takip Edin</h5>
+        <div class="footer-social">
+          <a href="#"><img src="https://cdn.jsdelivr.net/gh/simple-icons/simple-icons/icons/instagram.svg" width="22"/></a>
+          <a href="#"><img src="https://cdn.jsdelivr.net/gh/simple-icons/simple-icons/icons/facebook.svg" width="22"/></a>
+          <a href="#"><img src="https://cdn.jsdelivr.net/gh/simple-icons/simple-icons/icons/twitter.svg" width="22"/></a>
+        </div>
+      </div>
+    </div>
+    <div class="footer-bottom">© 2025 LuxuryFashion. Tüm hakları saklıdır.</div>
   </footer>
 
   <script src="js/app.js"></script>
+  <script src="js/slider.js"></script>
+  <script src="js/menu.js"></script>
 </body>
 </html>
