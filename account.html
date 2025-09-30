@@ -1,0 +1,30 @@
+<!doctype html>
+<html lang="tr">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Hesabım - LuxuryFashion</title>
+  <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+  <header class="site-header">
+    <div class="brand">LuxuryFashion</div>
+    <nav class="nav">
+      <a href="index.html">Anasayfa</a>
+      <a href="favorites.html">Favoriler</a>
+      <a href="cart.html">Sepet</a>
+      <a href="account.html" class="active">Hesabım</a>
+    </nav>
+  </header>
+  <main style="max-width:500px;margin:40px auto;padding:0 16px;">
+    <h2>Hesabım</h2>
+    <form id="login-form">
+      <label>Kullanıcı Adı<br><input type="text" id="username" required></label><br><br>
+      <label>Şifre<br><input type="password" id="password" required></label><br><br>
+      <button class="btn" type="submit">Giriş Yap</button>
+    </form>
+    <div id="account-info" style="display:none"></div>
+  </main>
+  <script src="js/account.js"></script>
+</body>
+</html>

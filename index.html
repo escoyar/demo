@@ -1,0 +1,44 @@
+<!doctype html>
+<html lang="tr">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>LuxuryFashion - Anasayfa</title>
+  <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+  <header class="site-header">
+    <div class="brand">LuxuryFashion</div>
+    <nav class="nav">
+      <a href="index.html">Anasayfa</a>
+      <a href="#" id="link-categories">Koleksiyon</a>
+      <a href="cart.html">Sepet (<span id="cart-count">0</span>)</a>
+    </nav>
+  </header>
+
+  <main>
+    <section class="hero">
+      <div class="hero-inner">
+        <h1>Yeni Sezon</h1>
+        <p>Seçkin tasarımlar, ücretsiz kargo</p>
+        <a class="btn" href="#products">Alışverişe Başla</a>
+      </div>
+    </section>
+
+    <section class="controls">
+      <input id="search" placeholder="Ürün veya koleksiyon ara..." />
+      <select id="category-filter">
+        <option value="">Tüm Kategoriler</option>
+      </select>
+    </section>
+
+    <section id="products" class="product-grid" aria-live="polite"></section>
+  </main>
+
+  <footer class="site-footer">
+    <div>© LuxuryFashion - Demo</div>
+  </footer>
+
+  <script src="js/app.js"></script>
+</body>
+</html>

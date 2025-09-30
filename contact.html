@@ -1,0 +1,32 @@
+<!doctype html>
+<html lang="tr">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>İletişim - LuxuryFashion</title>
+  <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+  <header class="site-header">
+    <div class="brand">LuxuryFashion</div>
+    <nav class="nav">
+      <a href="index.html">Anasayfa</a>
+      <a href="favorites.html">Favoriler</a>
+      <a href="cart.html">Sepet</a>
+      <a href="account.html">Hesabım</a>
+      <a href="contact.html" class="active">İletişim</a>
+    </nav>
+  </header>
+  <main style="max-width:600px;margin:40px auto;padding:0 16px;">
+    <h2>İletişim</h2>
+    <form id="contact-form">
+      <label>Ad Soyad<br><input type="text" required></label><br><br>
+      <label>E-posta<br><input type="email" required></label><br><br>
+      <label>Mesaj<br><textarea rows="5" required></textarea></label><br><br>
+      <button class="btn" type="submit">Gönder</button>
+    </form>
+    <div id="contact-result"></div>
+  </main>
+  <script src="js/contact.js"></script>
+</body>
+</html>

@@ -1,0 +1,11 @@
+{
+  "name": "luxuryfashion-lite",
+  "version": "1.0.0",
+  "description": "Statik e-ticaret demo sitesi",
+  "scripts": {
+    "start": "http-server -p 5173"
+  },
+  "devDependencies": {
+    "http-server": "^0.12.3"
+  }
+}

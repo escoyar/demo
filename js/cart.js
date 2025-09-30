@@ -1,0 +1,15 @@
+function formatCurrency(v){return v.toLocaleString('tr-TR',{style:'currency',currency:'TRY'})}
+function renderCart(){const root=document.getElementById('cart-root');const cart = JSON.parse(localStorage.getItem('luxcart-v1')||'[]');if(cart.length===0){root.innerHTML='<p>Sepetiniz boş.</p>';return}
+ fetch('products.json').then(r=>r.json()).then(products=>{root.innerHTML='';let total=0;cart.forEach(item=>{const p = products.find(x=>x.id===item.id);const row=document.createElement('div');row.style.display='flex';row.style.gap='12px';row.style.alignItems='center';row.style.marginBottom='12px';
+ const img=document.createElement('img');img.src='data:image/svg+xml;utf8,'+encodeURIComponent(`<svg xmlns='http://www.w3.org/2000/svg' width='200' height='140'><rect width='100%' height='100%' fill='#f3f3f3'/><text x='50%' y='50%' font-size='20' text-anchor='middle' fill='#222' font-family='Arial' dy='.35em'>${p.name}</text></svg>`);img.style.width='120px';img.style.height='90px';img.style.objectFit='cover';
+ const title=document.createElement('div');title.innerHTML=`<strong>${p.name}</strong><br/><small>${p.category}</small>`;
+ const qty=document.createElement('input');qty.type='number';qty.value=item.qty;qty.min=1;qty.style.width='72px';
+ qty.addEventListener('change',()=>{const q = Math.max(1,Number(qty.value)||1);item.qty=q;localStorage.setItem('luxcart-v1',JSON.stringify(cart));renderCart();document.getElementById('cart-count').textContent = cart.reduce((s,i)=>s+i.qty,0)});
+ const price=document.createElement('div');price.style.marginLeft='auto';price.innerHTML=`${formatCurrency(p.price)} <div style='font-weight:700'>${formatCurrency(p.price*item.qty)}</div>`;
+ const remove=document.createElement('button');remove.textContent='Kaldır';remove.style.marginLeft='12px';remove.addEventListener('click',()=>{const idx = cart.findIndex(c=>c.id===item.id);if(idx>-1){cart.splice(idx,1);localStorage.setItem('luxcart-v1',JSON.stringify(cart));renderCart();document.getElementById('cart-count').textContent = cart.reduce((s,i)=>s+i.qty,0)}});
+ row.appendChild(img);row.appendChild(title);row.appendChild(qty);row.appendChild(price);row.appendChild(remove);root.appendChild(row);total+=p.price*item.qty});
+ const footer = document.createElement('div');footer.style.marginTop='18px';footer.innerHTML=`<div style='text-align:right'><strong>Toplam: ${formatCurrency(total)}</strong></div><div style='text-align:right;margin-top:8px'><button id='checkout' class='btn'>Alışverişi Tamamla</button></div>`;
+ root.appendChild(footer);document.getElementById('checkout').addEventListener('click',()=>{alert('Demo: sipariş oluşturuldu.');localStorage.removeItem('luxcart-v1');renderCart();document.getElementById('cart-count').textContent='0'});
+}).catch(e=>{root.textContent='Ürün yüklenemedi.'})}
+
+document.addEventListener('DOMContentLoaded',()=>{renderCart();document.getElementById('cart-count').textContent = JSON.parse(localStorage.getItem('luxcart-v1')||'[]').reduce((s,i)=>s+i.qty,0)})

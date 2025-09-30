@@ -1,0 +1,7 @@
+[
+  {"id":1,"name":"Oversize Triko Kazak","price":1599.00,"category":"Erkek","description":"Yün karışımlı rahat kesim triko kazak.","image":"img/urun1.jpg"},
+  {"id":2,"name":"Klasik Kesim Ceket","price":4699.00,"category":"Erkek","description":"Şık ofis ve gece kullanımı için klasik ceket.","image":"img/urun2.jpg"},
+  {"id":3,"name":"Deri El Çantası","price":5499.00,"category":"Kadın","description":"El yapımı doğal deri el çantası.","image":"img/urun3.jpg"},
+  {"id":4,"name":"İpek Fular","price":799.00,"category":"Kadın","description":"Günlük kullanıma uygun ipek fular.","image":"img/urun4.jpg"},
+  {"id":5,"name":"Spor Ayakkabı","price":2199.00,"category":"Unisex","description":"Konforlu günlük spor ayakkabısı.","image":"img/urun5.jpg"}
+]
